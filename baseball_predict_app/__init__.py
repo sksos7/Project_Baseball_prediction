@@ -1,17 +1,11 @@
 from flask import Flask
 
-app = Flask(__name__)
-
-@app.route('/')
-def index():
-    return 'Hello World!'
-
 def create_app():
     app = Flask(__name__)
 
-    from baseball_predict_app.routes.baseball import baseball
+    from baseball_predict_app.routes.baseball import main_bp
 
-    app.register_blueprint(baseball)
+    app.register_blueprint(main_bp)
 
     return app
 
