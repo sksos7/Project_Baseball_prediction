@@ -9,15 +9,29 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:5000/">한국 프로 야구</a>
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">For Lotte Giant Fan</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/">순위</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="http://127.0.0.1:5000/record/">기록</a>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                기록
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/HITTER/">타자 기록</a></li>
+                <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/PITCHER/">투수 기록</a></li>
+                <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/DEFENSE/">수비 기록</a></li>
+                <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/RUNNER/">주루 기록</a></li>
+              </ul>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="http://127.0.0.1:5000/result/">경기 결과</a>
+            </li>
+
             <li class="nav-item">
               <a class="nav-link" href="http://127.0.0.1:5000/predict/">예측</a>
             </li>
@@ -28,7 +42,7 @@
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">팀 순위</h1>
+          <h1 class="fw-light">{{url_name}}</h1>
         </div>
       </div>
     </section>
@@ -47,19 +61,23 @@
         <th colspan=12 align = "center">KBO 순위</th>
         <!-- </tr> -->
         {% for x in fetch %}
-        <tr>
-          <td>{{x[0]}}</td>
-          <td>{{x[1]}}</td>
-          <td>{{x[2]}}</td>
-          <td>{{x[3]}}</td>
-          <td>{{x[4]}}</td>
-          <td>{{x[5]}}</td>
-          <td>{{x[6]}}</td>
-          <td>{{x[7]}}</td>
-          <td>{{x[9]}}</td>
-          <td>{{x[10]}}</td>
-          <td>{{x[11]}}</td>
-        </tr>
+          {% if x[1] == '롯데' %}
+          <tr bgcolor = 'red' border=10>
+            {% for y in x %}
+              <strong>
+                <td>{{y}}</td>
+              </strong>
+            {% endfor %}
+          </tr>
+          {% else %}
+          <tr>
+            {% for y in x %}
+              <strong>
+                <td>{{y}}</td>
+              </strong>
+            {% endfor %}
+          </tr>
+          {% endif %}
         {% endfor %}
       </table>
     </section>

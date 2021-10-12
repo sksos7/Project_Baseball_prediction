@@ -5,10 +5,12 @@ def create_app():
 
     from baseball_predict_app.routes.baseball import main_bp
     from baseball_predict_app.routes.baseball_record import record_bp
+    from baseball_predict_app.routes.baseball_result import result_bp
     from baseball_predict_app.routes.baseball_predict import predict_bp
 
     app.register_blueprint(main_bp)
     app.register_blueprint(record_bp)
+    app.register_blueprint(result_bp)
     app.register_blueprint(predict_bp)
 
     return app

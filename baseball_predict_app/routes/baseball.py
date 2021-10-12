@@ -6,5 +6,5 @@ main_bp = Blueprint('main', __name__)
 
 @main_bp.route('/', methods = ['GET'])
 def index():
-    fetch = data_load.data_select_KBO_RANK()
-    return render_template('main.html', fetch=fetch)
+    fetch, url_name = data_load.data_select_KBO_RANK()
+    return render_template('main.html', fetch=fetch, url_name=url_name)

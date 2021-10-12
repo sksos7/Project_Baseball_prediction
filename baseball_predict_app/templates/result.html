@@ -17,7 +17,7 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 기록
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -26,11 +26,11 @@
                 <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/DEFENSE/">수비 기록</a></li>
                 <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/RUNNER/">주루 기록</a></li>
               </ul>
-            </li>
+            </li>    
 
             <li class="nav-item">
-              <a class="nav-link" href="http://127.0.0.1:5000/result/">경기 결과</a>
-            </li>
+                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/result/">경기 결과</a>
+              </li>
 
             <li class="nav-item">
               <a class="nav-link" href="http://127.0.0.1:5000/predict/">예측</a>
@@ -42,9 +42,7 @@
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <h1 class="fw-light">
-            {{url_name}}
-          </h1>
+          <h1 class="fw-light">경기 결과</h1>
         </div>
       </div>
     </section>
@@ -60,75 +58,15 @@
       </style>
       <table border=10 width ="800" height="500" align = "center" >
         <!-- <tr align = "center"> -->
-        <th>
-          {% if url_name == "타자 기록" %}
-            <td>팀명</td>
-            <td>AVG</td>
-            <td>G</td>
-            <td>PA</td>
-            <td>AB</td>
-            <td>R</td>
-            <td>H</td>
-            <td>2B</td>
-            <td>3B</td>
-            <td>HR</td>
-            <td>TB</td>
-            <td>RBI</td>
-            <td>SAC</td>
-            <td>SF</td>
-          {% elif url_name == "투수 기록" %}
-            <td>팀명</td>
-            <td>ERA</td>
-            <td>G</td>
-            <td>W</td>
-            <td>L</td>
-            <td>SV</td>
-            <td>HLD</td>
-            <td>WPCT</td>
-            <td>IP</td>
-            <td>H</td>
-            <td>HR</td>
-            <td>BB</td>
-            <td>HBP</td>
-            <td>SO</td>
-            <td>R</td>
-            <td>ER</td>
-            <td>WHIP</td>
-          {% elif url_name == "수비 기록" %}
-            <td>팀명</td>
-            <td>G</td>
-            <td>E</td>
-            <td>PKO</td>
-            <td>PO</td>
-            <td>A</td>
-            <td>DP</td>
-            <td>FPCT</td>
-            <td>PB</td>
-            <td>SB</td>
-            <td>CS</td>
-            <td>CS%</td>
-          {% elif url_name == "주루 기록" %}
-            <td>팀명</td>
-            <td>G</td>
-            <td>SBA</td>
-            <td>SB</td>
-            <td>CS</td>
-            <td>SB%</td>
-            <td>OOB</td>
-            <td>PKO</td>
-          {% endif %}
-        </th>
+        <tr>
+          <td>날짜</td>
+          <td>시간</td>
+          <td>경기</td>
+          <td>구장</td>
+          <td>비고</td>
+        </tr>
         <!-- </tr> -->
         {% for x in fetch %}
-          {% if x[1] == '롯데' %}
-          <tr bgcolor = 'red' border=10>
-            {% for y in x %}
-              <strong>
-                <td>{{y}}</td>
-              </strong>
-            {% endfor %}
-          </tr>
-          {% else %}
             <tr>
             {% for y in x %}
               <strong>
@@ -136,9 +74,7 @@
               </strong>
             {% endfor %} 
             </tr> 
-          {% endif %}
         {% endfor %}
-      </table>
     </section>
   </body>
 </html>

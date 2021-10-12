@@ -9,15 +9,29 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="http://127.0.0.1:5000/">한국 프로 야구</a>
+        <a class="navbar-brand" href="http://127.0.0.1:5000/">For Lotte Giant Fan</a>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
               <a class="nav-link" href="http://127.0.0.1:5000/">순위</a>
             </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                기록
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/HITTER/">타자 기록</a></li>
+                <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/PITCHER/">투수 기록</a></li>
+                <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/DEFENSE/">수비 기록</a></li>
+                <li><a class="dropdown-item" href="http://127.0.0.1:5000/record/RUNNER/">주루 기록</a></li>
+              </ul>
+            </li>    
+
             <li class="nav-item">
-              <a class="nav-link" href="http://127.0.0.1:5000/record/">기록</a>
+              <a class="nav-link" href="http://127.0.0.1:5000/result/">경기 결과</a>
             </li>
+
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="http://127.0.0.1:5000/predict/">예측</a>
             </li>
@@ -33,6 +47,34 @@
       </div>
     </section>
     <section>
+      <style>
+        table {
+          border: 1px solid #444444;
+          text-align: center;
+        }
+        th, td {
+          border: 1px solid #444444;
+        }
+      </style>
+      <table align = 'center' >
+        <tr>
+          <td>
+            {% for x in predict_record %}
+            {{ x|safe }}
+            {% endfor %}
+          </td>
+          <td>
+            <table>
+              <th>예측</th>
+              {% for x in range(0,14)%}
+              <tr>
+                <td>1</td>
+              </tr>
+              {% endfor %}    
+            </table>
+          </td>
+        </tr>
+      </table>
     </section>
   </body>
 </html>
