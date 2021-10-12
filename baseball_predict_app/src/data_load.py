@@ -98,5 +98,15 @@ def data_select_KBO_RESULT():
     return fetch, url_name
 
 def data_select_KBO_PREDICT():
+    conn = sqlite3.connect('./baseball_predict_app/src/baseballDB.db')
+    cur = conn.cursor()
+
+    sql_select = """
+    SELECT *
+    FROM PREDICT
+    """
+    cur.execute(sql_select)
+    fetch = cur.fetchall()
+
     X_train, y_train, X_test, predict_record = data_pretreatment.pretreatment()
-    return predict_record
+    return predict_record, fetch

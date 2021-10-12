@@ -66,9 +66,13 @@
           <td>
             <table>
               <th>예측</th>
-              {% for x in range(0,14)%}
+              {% for y in predict_values%}
               <tr>
-                <td>1</td>
+                {% if y[0] == 0%}
+                <td style="color: red;">패배</td>
+                {% elif y[0] == 1 %}
+                <td style="color: blue;">승리</td>
+                {% endif %}
               </tr>
               {% endfor %}    
             </table>
